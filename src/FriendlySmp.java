@@ -17,7 +17,6 @@
 
 import edu.rit.pj2.Task;
 import edu.rit.util.Pair;
-import java.util.ArrayList;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 

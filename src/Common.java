@@ -7,19 +7,15 @@
  * @author Noah Alvard
  */
 
-
-import edu.rit.util.Pair;
-
-import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.TreeSet;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 public abstract class Common
 {
-
-    public static ConcurrentHashMap.KeySetView largestGroups; //TODO: the threads group the groups into the largest group groups
-
     /**
      * GetDivisors
      *
