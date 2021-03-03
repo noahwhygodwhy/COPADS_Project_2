@@ -11,12 +11,14 @@
 import edu.rit.util.Pair;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ConcurrentSkipListMap;
 
 public abstract class Common
 {
 
+    public static ConcurrentHashMap.KeySetView largestGroups; //TODO: the threads group the groups into the largest group groups
 
     /**
      * GetDivisors
@@ -241,10 +243,13 @@ public abstract class Common
 
         LongPair friendlinessValue = Common.reduceFraction(new LongPair(numerator, value));
 
-        if (!friendliness.containsKey(friendlinessValue))
-        {
-            friendliness.put(friendlinessValue, new ConcurrentLinkedQueue<Long>());
-        }
-        friendliness.get(friendlinessValue).add(value);
+        friendliness.computeIfAbsent(friendlinessValue, f->new ConcurrentLinkedQueue<Long>());
+
+//        if (!friendliness.containsKey(friendlinessValue))
+//        {
+//            friendliness.put(friendlinessValue, new ConcurrentLinkedQueue<Long>());
+//        }
+        friendliness.computeIfPresent(friendlinessValue, (key, val)->{val.add(value); return val;});
+        //friendliness.get(friendlinessValue).add(value);
     }
 }
