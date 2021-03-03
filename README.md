@@ -1,4 +1,4 @@
-# COPADS_Project_2
+# COPADS Project 2
 
 A excersize in concurrent programming. 
 
